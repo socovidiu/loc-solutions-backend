@@ -1,0 +1,84 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# =========================
+# Python packaging
+# =========================
+*.egg-info/
+.eggs/
+dist/
+build/
+pip-wheel-metadata/
+
+# =========================
+# Environment variables / secrets
+# =========================
+.env
+.env.local
+.env.*.local
+
+# =========================
+# FastAPI / runtime
+# =========================
+*.log
+logs/
+*.pid
+
+# =========================
+# Database
+# =========================
+*.sqlite3
+*.db
+
+# =========================
+# Docker
+# =========================
+docker-compose.override.yml
+.docker/
+docker-data/
+
+# =========================
+# Editors & IDEs
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Testing & coverage
+# =========================
+.coverage
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# =========================
+# Tooling
+# =========================
+.python-version
+uv.lock
+
+# =========================
+# Documentation builds
+# =========================
+site/
