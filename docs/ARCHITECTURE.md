@@ -55,10 +55,6 @@ Key settings:
 - `LLM_PROVIDER`
 - HTTP timeouts / retries
 
-### Interview Q/A
-**Q:** Why do you use `lru_cache` for settings?  
-**A:** FastAPI dependencies may be resolved multiple times. Caching ensures settings are instantiated once, avoids repeated env parsing, and guarantees consistent configuration across the app.
-
 ---
 
 ## 4. Database & persistence
@@ -80,10 +76,6 @@ Key settings:
 - `qc_report` (JSONB)
 - `tms_provider`, `tms_job_id`
 - timestamps
-
-### Interview Q/A
-**Q:** Why JSONB instead of text columns?  
-**A:** Localisation payloads and QC results are structured JSON. JSONB avoids manual serialization, is queryable, and performs well in Postgres.
 
 ---
 
@@ -108,14 +100,6 @@ flowchart TB
 - Orchestrates workflows
 - Coordinates DB + TMS + webhooks + (future) queues
 - Owns job lifecycle logic
-
-### Interview Q/A
-**Q:** Why use a repository layer?  
-**A:** It isolates persistence logic from business logic, reduces duplication, and allows changing the DB or schema without touching API or workflow code.
-
-**Q:** Why have a service layer if it’s thin?  
-**A:** The service layer defines where workflow complexity will live. As soon as we add TMS submission, QC orchestration, retries, or authorization, the service absorbs that logic without bloating endpoints.
-
 ---
 
 ## 6. Webhook handling & reliability
@@ -137,10 +121,6 @@ flowchart TB
 - Job status transitions are **conditional**
 - DB updates only succeed if current status matches expected state
 - Prevents duplicate or out-of-order transitions
-
-### Interview Q/A
-**Q:** How do you handle webhook retries safely?  
-**A:** We deduplicate events using an idempotency key stored in the DB, and we enforce job state transitions atomically so duplicates and out-of-order events become no-ops.
 
 ---
 
